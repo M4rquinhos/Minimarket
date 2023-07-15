@@ -216,6 +216,7 @@
             this.Controls.Add(this.TabPrincipal);
             this.Name = "Frm_Categorias";
             this.Text = "Categorías";
+            this.Load += new System.EventHandler(this.Frm_Categorias_Load);
             this.TabPrincipal.ResumeLayout(false);
             this.tabCategorias.ResumeLayout(false);
             this.tabCategorias.PerformLayout();
