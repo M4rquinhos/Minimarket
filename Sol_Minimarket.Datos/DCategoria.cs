@@ -36,5 +36,31 @@ namespace Sol_Minimarket.Datos
                 if(sqlCon.State == ConnectionState.Open) sqlCon.Close();
             }
         }
+
+        public string GuardarCategoria(int opcion, ECategoria objCategoria)
+        {
+            string respuesta = "";
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("sp_GuardarCategoria", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@opcion", SqlDbType.Int).Value = opcion;
+                comando.Parameters.Add("@idCategoria", SqlDbType.Int).Value = objCategoria.IdCategoria;
+                comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = objCategoria.Descripcion;
+                sqlCon.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo guardar los datos";
+            }
+            catch (Exception ex)
+            {
+                respuesta =  ex.Message;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+            return respuesta;
+        }
     }
 }
