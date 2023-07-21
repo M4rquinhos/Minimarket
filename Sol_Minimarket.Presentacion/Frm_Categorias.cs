@@ -21,6 +21,7 @@ namespace Sol_Minimarket.Presentacion
 
         #region "variables"
         int opcionGuardar = 0; //No tiene accion definida
+        int idCategoria = 0;
 
         #endregion
 
@@ -28,9 +29,9 @@ namespace Sol_Minimarket.Presentacion
         private void FormatoGrid()
         {
             dtgvCategorias.Columns[0].Width = 100;
-            dtgvCategorias.Columns[0].HeaderText = "id_Categoria";
+            dtgvCategorias.Columns[0].HeaderText = "Identificador";
             dtgvCategorias.Columns[1].Width = 400;
-            dtgvCategorias.Columns[1].HeaderText = "Categoria";
+            dtgvCategorias.Columns[1].HeaderText = "Nombre de Categoria";
         }
 
         private void ListarCategorias(string categoria)
@@ -61,6 +62,19 @@ namespace Sol_Minimarket.Presentacion
             this.btnGuardar.Visible = estado;
             this.btnVerificar.Visible = !estado;
         }
+
+        private void SeleccionItem()
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(dtgvCategorias.CurrentRow.Cells["idCategoria"].Value)))
+            {
+                MessageBox.Show("Campo vacio", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);   
+            }
+            else
+            {
+                this.idCategoria = Convert.ToInt32(dtgvCategorias.CurrentRow.Cells["idCategoria"].Value);
+                txtDescripcionCat.Text = Convert.ToString(dtgvCategorias.CurrentRow.Cells["descripcion"].Value);
+            }
+        }
         #endregion
 
         private void Frm_Categorias_Load(object sender, EventArgs e)
@@ -78,11 +92,14 @@ namespace Sol_Minimarket.Presentacion
             {
                 //Registro de informacion
                 string respuesta = string.Empty;
+                //Estado nuevo o actualizar}
+                _ = (opcionGuardar == 1) ? this.opcionGuardar = 1 : this.opcionGuardar = 2;
                 ECategoria objCategoria = new ECategoria
                 {
+                    IdCategoria = this.idCategoria,
                     Descripcion = txtDescripcionCat.Text.Trim()
                 };
-                respuesta = NCategoria.GuardarCategoria(1, objCategoria);
+                respuesta = NCategoria.GuardarCategoria(this.opcionGuardar, objCategoria);
                 if (respuesta == "OK")
                 {
                     this.ListarCategorias("%");
@@ -93,6 +110,7 @@ namespace Sol_Minimarket.Presentacion
                     txtDescripcionCat.ReadOnly = true;
                     txtDescripcionCat.Text = string.Empty;
                     TabPrincipal.SelectedIndex = 0;
+                    this.opcionGuardar = 0;
                 }
                 else
                 {
@@ -115,6 +133,12 @@ namespace Sol_Minimarket.Presentacion
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             this.opcionGuardar = 2; //Actualizar registro
+            this.EstadoBotones(false);
+            this.BotonesProcesos(true);
+            txtDescripcionCat.ReadOnly = false;
+            this.SeleccionItem();
+            TabPrincipal.SelectedIndex = 1;
+            txtDescripcionCat.Focus();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -123,6 +147,19 @@ namespace Sol_Minimarket.Presentacion
             txtDescripcionCat.Text = string.Empty;
             txtDescripcionCat.ReadOnly = true;
             this.EstadoBotones(true);
+            this.BotonesProcesos(false);
+            TabPrincipal.SelectedIndex = 0;
+        }
+
+        private void dtgvCategorias_DoubleClick(object sender, EventArgs e)
+        {
+            this.SeleccionItem();
+            this.BotonesProcesos(false);
+            TabPrincipal.SelectedIndex = 1;
+        }
+
+        private void btnVerificar_Click(object sender, EventArgs e)
+        {
             this.BotonesProcesos(false);
             TabPrincipal.SelectedIndex = 0;
         }

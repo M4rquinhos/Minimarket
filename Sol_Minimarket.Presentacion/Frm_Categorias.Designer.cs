@@ -35,6 +35,7 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabMantenimiento = new System.Windows.Forms.TabPage();
+            this.btnVerificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtDescripcionCat = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.btnReporte = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnVerificar = new System.Windows.Forms.Button();
             this.TabPrincipal.SuspendLayout();
             this.tabCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCategorias)).BeginInit();
@@ -86,6 +86,7 @@
             this.dtgvCategorias.ReadOnly = true;
             this.dtgvCategorias.Size = new System.Drawing.Size(561, 156);
             this.dtgvCategorias.TabIndex = 5;
+            this.dtgvCategorias.DoubleClick += new System.EventHandler(this.dtgvCategorias_DoubleClick);
             // 
             // btnBuscar
             // 
@@ -126,6 +127,17 @@
             this.tabMantenimiento.TabIndex = 1;
             this.tabMantenimiento.Text = "Mantenimiento";
             this.tabMantenimiento.UseVisualStyleBackColor = true;
+            // 
+            // btnVerificar
+            // 
+            this.btnVerificar.Location = new System.Drawing.Point(191, 87);
+            this.btnVerificar.Name = "btnVerificar";
+            this.btnVerificar.Size = new System.Drawing.Size(75, 23);
+            this.btnVerificar.TabIndex = 4;
+            this.btnVerificar.Text = "Verificar";
+            this.btnVerificar.UseVisualStyleBackColor = true;
+            this.btnVerificar.Visible = false;
+            this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
             // 
             // btnCancelar
             // 
@@ -221,16 +233,6 @@
             this.label3.Size = new System.Drawing.Size(122, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "(*) Información requerida";
-            // 
-            // btnVerificar
-            // 
-            this.btnVerificar.Location = new System.Drawing.Point(191, 87);
-            this.btnVerificar.Name = "btnVerificar";
-            this.btnVerificar.Size = new System.Drawing.Size(75, 23);
-            this.btnVerificar.TabIndex = 4;
-            this.btnVerificar.Text = "Verificar";
-            this.btnVerificar.UseVisualStyleBackColor = true;
-            this.btnVerificar.Visible = false;
             // 
             // Frm_Categorias
             // 
