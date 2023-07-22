@@ -23,5 +23,11 @@ namespace Sol_Minimarket.Negocio
             DCategoria datos = new DCategoria();
             return datos.GuardarCategoria(opcion, objCategoria);
         }
+
+        public static string DesactivarCategoria(int idCategoria)
+        {
+            DCategoria datos = new DCategoria();
+            return datos.DesactivarCategoria(idCategoria);
+        }
     }
 }

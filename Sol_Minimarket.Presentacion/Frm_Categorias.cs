@@ -144,6 +144,7 @@ namespace Sol_Minimarket.Presentacion
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.opcionGuardar = 0;
+            this.idCategoria = 0;
             txtDescripcionCat.Text = string.Empty;
             txtDescripcionCat.ReadOnly = true;
             this.EstadoBotones(true);
@@ -162,6 +163,43 @@ namespace Sol_Minimarket.Presentacion
         {
             this.BotonesProcesos(false);
             TabPrincipal.SelectedIndex = 0;
+            this.idCategoria = 0;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(dtgvCategorias.CurrentRow.Cells["idCategoria"].Value)))
+            {
+                MessageBox.Show("Campo vacio, o no se encuentra el registro", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //Verificando que el usuario quiera eliminar el registro
+                DialogResult opcion;
+                opcion = MessageBox.Show($"¿Estás seguro de eliminar el registro {dtgvCategorias.CurrentRow.Cells["descripcion"].Value}",
+                                          "Aviso del sistema",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+                if (opcion == DialogResult.Yes)
+                {
+                    string respuesta = string.Empty;
+                    this.idCategoria = Convert.ToInt32(dtgvCategorias.CurrentRow.Cells["idCategoria"].Value);
+                    respuesta = NCategoria.DesactivarCategoria(idCategoria);
+                    if (respuesta.Equals("OK"))
+                    {
+                        this.idCategoria = 0;
+                        this.ListarCategorias("%");
+                        MessageBox.Show("Registro desactivado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.ListarCategorias(txtBuscar.Text.Trim());
         }
     }
 }

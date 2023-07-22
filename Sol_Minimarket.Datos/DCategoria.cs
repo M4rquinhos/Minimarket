@@ -62,5 +62,30 @@ namespace Sol_Minimarket.Datos
             }
             return respuesta;
         }
+
+        public string DesactivarCategoria(int idCategoria)
+        {
+            string respuesta = "";
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon = Conexion.GetInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("sp_DesactivarCategoria", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@idCategoria", SqlDbType.Int).Value = idCategoria;
+                sqlCon.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Error al desactivar Categoria";
+            }
+            catch (Exception ex)
+            {
+
+                respuesta = ex.Message; 
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+            return respuesta;
+        }
     }
 }
