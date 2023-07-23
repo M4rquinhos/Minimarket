@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sol_Minimarket.Negocio;
 using Sol_Minimarket.Entidades;
+using Sol_Minimarket.Presentacion.Reportes;
 
 namespace Sol_Minimarket.Presentacion
 {
@@ -200,6 +201,13 @@ namespace Sol_Minimarket.Presentacion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.ListarCategorias(txtBuscar.Text.Trim());
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            Rpt_Categoria reporte = new Rpt_Categoria();
+            reporte.txtParametro.Text = txtBuscar.Text.Trim();
+            reporte.ShowDialog();
         }
     }
 }
