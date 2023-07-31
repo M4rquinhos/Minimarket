@@ -32,14 +32,14 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DataSet_MiniMarket" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DataSet_MiniMarket" msprop:Generator_DataSetName="DataSet_MiniMarket">
+  <xs:element name="DataSet_MiniMarket" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet_MiniMarket" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet_MiniMarket">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="sp_ListarCategorias" msprop:Generator_RowEvHandlerName="sp_ListarCategoriasRowChangeEventHandler" msprop:Generator_RowDeletedName="sp_ListarCategoriasRowDeleted" msprop:Generator_RowDeletingName="sp_ListarCategoriasRowDeleting" msprop:Generator_RowEvArgName="sp_ListarCategoriasRowChangeEvent" msprop:Generator_TablePropName="sp_ListarCategorias" msprop:Generator_RowChangedName="sp_ListarCategoriasRowChanged" msprop:Generator_RowChangingName="sp_ListarCategoriasRowChanging" msprop:Generator_TableClassName="sp_ListarCategoriasDataTable" msprop:Generator_RowClassName="sp_ListarCategoriasRow" msprop:Generator_TableVarName="tablesp_ListarCategorias" msprop:Generator_UserTableName="sp_ListarCategorias">
+        <xs:element name="sp_ListarCategorias" msprop:Generator_RowClassName="sp_ListarCategoriasRow" msprop:Generator_RowEvHandlerName="sp_ListarCategoriasRowChangeEventHandler" msprop:Generator_RowDeletedName="sp_ListarCategoriasRowDeleted" msprop:Generator_RowDeletingName="sp_ListarCategoriasRowDeleting" msprop:Generator_RowEvArgName="sp_ListarCategoriasRowChangeEvent" msprop:Generator_TablePropName="sp_ListarCategorias" msprop:Generator_RowChangedName="sp_ListarCategoriasRowChanged" msprop:Generator_UserTableName="sp_ListarCategorias" msprop:Generator_RowChangingName="sp_ListarCategoriasRowChanging" msprop:Generator_TableClassName="sp_ListarCategoriasDataTable" msprop:Generator_TableVarName="tablesp_ListarCategorias">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="idCategoria" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="idCategoria" msprop:Generator_ColumnPropNameInTable="idCategoriaColumn" msprop:Generator_ColumnVarNameInTable="columnidCategoria" msprop:Generator_UserColumnName="idCategoria" type="xs:int" />
-              <xs:element name="descripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+              <xs:element name="idCategoria" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="idCategoria" msprop:Generator_ColumnPropNameInTable="idCategoriaColumn" msprop:Generator_ColumnPropNameInRow="idCategoria" msprop:Generator_ColumnVarNameInTable="columnidCategoria" type="xs:int" />
+              <xs:element name="descripcion" msprop:Generator_UserColumnName="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
